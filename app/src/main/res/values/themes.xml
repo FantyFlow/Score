@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Score" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
+    <style name="Theme.Score" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,23 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Score.MyStyle">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
+        <item name="materialButtonStyle">@style/Widget.Button</item>
+    </style>
+
+    <style name="ThemeOverlay.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+
+    <style name="Widget.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">8dp</item>
     </style>
 </resources>
