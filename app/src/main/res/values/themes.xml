@@ -14,21 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Score.MyStyle">
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:navigationBarColor">@color/white</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    <style name="Theme.Score.MyStyle" parent="Theme.Material3.DayNight">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">?attr/isLightTheme
+        </item>
         <item name="colorPrimary">@color/white</item>
-        <item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
-        <item name="materialButtonStyle">@style/Widget.Button</item>
-    </style>
-
-    <style name="ThemeOverlay.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:textColorPrimary">@color/black</item>
-    </style>
-
-    <style name="Widget.Button" parent="Widget.MaterialComponents.Button">
-        <item name="cornerRadius">8dp</item>
     </style>
 </resources>
