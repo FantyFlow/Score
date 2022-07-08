@@ -1,38 +1,35 @@
 package com.example.score
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
-class MyViewModel : ViewModel() {
-    private val _numberA by lazy { MutableStateFlow(0) }
-    private val _numberB by lazy { MutableStateFlow(0) }
-    val numberA: StateFlow<Int> get() = _numberA
-    val numberB: StateFlow<Int> get() = _numberB
+class MyViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+    val numberA by lazy { savedStateHandle.getStateFlow("numberA", 0) }
+    val numberB by lazy { savedStateHandle.getStateFlow("numberB", 0) }
     private var backA = 0
     private var backB = 0
 
     fun addA(int: Int) {
-        backA = _numberA.value
-        backB = _numberB.value
-        _numberA.value = _numberA.value.plus(int)
+        backA = numberA.value
+        backB = numberB.value
+        savedStateHandle["numberA"] = numberA.value + int
     }
 
     fun addB(int: Int) {
-        backA = _numberA.value
-        backB = _numberB.value
-        _numberB.value = _numberB.value.plus(int)
+        backA = numberA.value
+        backB = numberB.value
+        savedStateHandle["numberB"] = numberB.value + int
     }
 
     fun reset() {
-        backA = _numberA.value
-        backB = _numberB.value
-        _numberA.value = 0
-        _numberB.value = 0
+        backA = numberA.value
+        backB = numberB.value
+        savedStateHandle["numberA"] = 0
+        savedStateHandle["numberB"] = 0
     }
 
     fun undo() {
-        _numberA.value = backA
-        _numberB.value = backB
+        savedStateHandle["numberA"] = backA
+        savedStateHandle["numberB"] = backB
     }
 }
